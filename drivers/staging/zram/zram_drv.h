@@ -61,10 +61,7 @@ static const size_t max_zpage_size = PAGE_SIZE / 4 * 3;
 #define SECTOR_SIZE		(1 << SECTOR_SHIFT)
 #define SECTORS_PER_PAGE_SHIFT	(PAGE_SHIFT - SECTOR_SHIFT)
 #define SECTORS_PER_PAGE	(1 << SECTORS_PER_PAGE_SHIFT)
-#define ZRAM_LOGICAL_BLOCK_SHIFT 12
-#define ZRAM_LOGICAL_BLOCK_SIZE	(1 << ZRAM_LOGICAL_BLOCK_SHIFT)
-#define ZRAM_SECTOR_PER_LOGICAL_BLOCK	\
-	(1 << (ZRAM_LOGICAL_BLOCK_SHIFT - SECTOR_SHIFT))
+#define ZRAM_LOGICAL_BLOCK_SIZE	4096
 
 /* Flags for zram pages (table[page_no].flags) */
 enum zram_pageflags {
@@ -124,7 +121,7 @@ struct zram {
 };
 
 extern struct zram *zram_devices;
-extern unsigned int zram_num_devices;
+extern unsigned int num_devices;
 #ifdef CONFIG_SYSFS
 extern struct attribute_group zram_disk_attr_group;
 #endif
