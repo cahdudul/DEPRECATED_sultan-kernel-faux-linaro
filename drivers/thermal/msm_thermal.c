@@ -23,11 +23,11 @@
 #define DEF_TEMP_SENSOR      0
 #define DEF_THERMAL_CHECK_MS 1250
 #define DEF_ALLOWED_MAX_HIGH 75
-#define DEF_ALLOWED_MAX_FREQ 810000
+#define DEF_ALLOWED_MAX_FREQ 972000
 
 static int enabled;
 static int allowed_max_high = DEF_ALLOWED_MAX_HIGH;
-static int allowed_max_low = (DEF_ALLOWED_MAX_HIGH - 10);
+static int allowed_max_low = (DEF_ALLOWED_MAX_HIGH - 7);
 static int allowed_max_freq = DEF_ALLOWED_MAX_FREQ;
 static int check_interval_ms = DEF_THERMAL_CHECK_MS;
 static int thermal_throttled = 0;
