@@ -248,8 +248,8 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = gcc
 HOSTCXX      = g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer
-HOSTCXXFLAGS = -O2
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fgcse-lm -fgcse-sm -fsched-spec-load -ftracer -fforce-addr -fprefetch-loop-arrays -fsingle-precision-constant -ftree-vectorize -fomit-frame-pointer
+HOSTCXXFLAGS = -O3 -fgcse-lm -fgcse-sm -fsched-spec-load -ftracer -fforce-addr -fprefetch-loop-arrays -fsingle-precision-constant -mtune=cortex-a8 -marm -march=armv7-a -mfpu=neon -ftree-vectorize -mvectorize-with-neon-double
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
@@ -359,7 +359,7 @@ CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
 CFLAGS_KERNEL	= -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr -O2 -ftracer -fprefetch-loop-arrays -fsingle-precision-constant -mtune=cortex-a8 -marm -march=armv7-a -mfpu=neon -ftree-vectorize -mvectorize-with-neon-double
-AFLAGS_KERNEL	=
+AFLAGS_KERNEL	= -O3 -fgcse-lm -fgcse-sm -fsched-spec-load -ftracer -fforce-addr -fprefetch-loop-arrays -fsingle-precision-constant -mtune=cortex-a8 -marm -march=armv7-a -mfpu=neon -ftree-vectorize -mvectorize-with-neon-double
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -377,7 +377,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks
-KBUILD_AFLAGS_KERNEL :=
+KBUILD_AFLAGS_KERNEL := -O3 -fgcse-lm -fgcse-sm -fsched-spec-load -ftracer -fforce-addr -fprefetch-loop-arrays -fsingle-precision-constant -mtune=cortex-a8 -marm -march=armv7-a -mfpu=neon -ftree-vectorize -mvectorize-with-neon-double
 KBUILD_CFLAGS_KERNEL := -fgcse-lm -fgcse-sm -fsched-spec-load -ftracer -fforce-addr -O2 -fprefetch-loop-arrays -fsingle-precision-constant -mtune=cortex-a8 -marm -march=armv7-a -mfpu=neon -ftree-vectorize -mvectorize-with-neon-double
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
