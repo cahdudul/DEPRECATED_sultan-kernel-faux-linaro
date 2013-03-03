@@ -135,9 +135,15 @@
 
 #ifdef CONFIG_CPU_FREQ_GOV_ONDEMAND_2_PHASE
 int set_two_phase_freq(int cpufreq);
+#endif
 #ifdef CONFIG_CPU_FREQ_GOV_INTELLIDEMAND
 int id_set_two_phase_freq(int cpufreq);
 #endif
+#ifdef CONFIG_CPU_FREQ_GOV_BADASS_2_PHASE
+int set_two_phase_freq_badass(int cpufreq);
+#endif
+#ifdef CONFIG_CPU_FREQ_GOV_BADASS_3_PHASE
+int set_three_phase_freq_badass(int cpufreq);
 #endif
 
 /* Macros assume PMIC GPIOs start at 0 */
@@ -2616,8 +2622,8 @@ static struct regulator_consumer_supply vreg_consumers_PM8901_S4_PC[] = {
 /* RPM early regulator constraints */
 static struct rpm_regulator_init_data rpm_regulator_early_init_data[] = {
 	/*	 ID       a_on pd ss min_uV   max_uV   init_ip    freq */
-	RPM_SMPS(PM8058_S0, 0, 1, 1,  500000, 1350000, SMPS_HMIN, 1p92),
-	RPM_SMPS(PM8058_S1, 0, 1, 1,  500000, 1250000, SMPS_HMIN, 1p92),
+	RPM_SMPS(PM8058_S0, 0, 1, 1,  500000, 1450000, SMPS_HMIN, 1p92),
+	RPM_SMPS(PM8058_S1, 0, 1, 1,  500000, 1450000, SMPS_HMIN, 1p92),
 };
 
 /* RPM regulator constraints */
@@ -3108,7 +3114,7 @@ static struct pm8058_led_config pm_led_config[] = {
 		.name = "button-backlight",
 		.type = PM8058_LED_DRVX,
 		.bank = 6,
-		.flags = PM8058_LED_LTU_EN,
+		.flags = PM8058_LED_LTU_EN | PM8058_LED_DYNAMIC_BRIGHTNESS_EN,
 		.period_us = USEC_PER_SEC / 1000,
 		.start_index = 0,
 		.duites_size = 8,
@@ -6222,9 +6228,16 @@ static void __init msm8x60_init(struct msm_board_data *board_data)
 
 #ifdef CONFIG_CPU_FREQ_GOV_ONDEMAND_2_PHASE
 	set_two_phase_freq(1134000);
+#endif
 #ifdef CONFIG_CPU_FREQ_GOV_INTELLIDEMAND
 	id_set_two_phase_freq(1134000);
 #endif
+
+#ifdef CONFIG_CPU_FREQ_GOV_BADASS_2_PHASE
+	set_two_phase_freq_badass(CONFIG_CPU_FREQ_GOV_BADASS_2_PHASE_FREQ);
+#endif
+#ifdef CONFIG_CPU_FREQ_GOV_BADASS_3_PHASE
+	set_three_phase_freq_badass(CONFIG_CPU_FREQ_GOV_BADASS_3_PHASE_FREQ);
 #endif
 
 	msm8x60_init_tlmm();
