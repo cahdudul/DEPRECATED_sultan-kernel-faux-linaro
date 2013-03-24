@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Linux/arm 3.0.67 Kernel Configuration
+# Linux/arm 3.0.67-pyd-bt Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_SYS_SUPPORTS_APM_EMULATION=y
@@ -1501,7 +1501,7 @@ CONFIG_SERIAL_MSM_HS=y
 # CONFIG_SERIAL_MSM_HS_IMC is not set
 CONFIG_SERIAL_MSM_HSL=y
 CONFIG_SERIAL_MSM_HSL_CONSOLE=y
-# CONFIG_SERIAL_BCM_BT_LPM is not set
+CONFIG_SERIAL_BCM_BT_LPM=y
 # CONFIG_SERIAL_TIMBERDALE is not set
 # CONFIG_SERIAL_ALTERA_JTAGUART is not set
 # CONFIG_SERIAL_ALTERA_UART is not set
@@ -2226,7 +2226,7 @@ CONFIG_USB_HID=y
 # CONFIG_HID_ROCCAT_KOVAPLUS is not set
 # CONFIG_HID_ROCCAT_PYRA is not set
 # CONFIG_HID_SAMSUNG is not set
-# CONFIG_HID_SONY is not set
+CONFIG_HID_SONY=y
 # CONFIG_HID_SUNPLUS is not set
 # CONFIG_HID_GREENASIA is not set
 # CONFIG_HID_SMARTJOYPLUS is not set
@@ -2707,7 +2707,20 @@ CONFIG_TMPFS=y
 # CONFIG_HUGETLB_PAGE is not set
 # CONFIG_CONFIGFS_FS is not set
 # CONFIG_MISC_FILESYSTEMS is not set
-# CONFIG_NETWORK_FILESYSTEMS is not set
+CONFIG_NETWORK_FILESYSTEMS=y
+# CONFIG_NFS_FS is not set
+# CONFIG_NFSD is not set
+# CONFIG_CEPH_FS is not set
+CONFIG_CIFS=y
+# CONFIG_CIFS_STATS is not set
+# CONFIG_CIFS_WEAK_PW_HASH is not set
+# CONFIG_CIFS_UPCALL is not set
+# CONFIG_CIFS_XATTR is not set
+# CONFIG_CIFS_DEBUG2 is not set
+# CONFIG_CIFS_DFS_UPCALL is not set
+# CONFIG_NCP_FS is not set
+# CONFIG_CODA_FS is not set
+# CONFIG_AFS_FS is not set
 
 #
 # Partition Types
