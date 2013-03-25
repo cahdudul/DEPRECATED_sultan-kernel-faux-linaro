@@ -1792,7 +1792,7 @@ error_out:
 	return ret;
 }
 
-#ifdef CONFIG_CPUFREQ_LIMIT_MAX_FREQ // limit max freq
+#ifdef CONFIG_SEC_LIMIT_MAX_FREQ // limit max freq
 enum {
 	SET_MIN = 0,
 	SET_MAX
