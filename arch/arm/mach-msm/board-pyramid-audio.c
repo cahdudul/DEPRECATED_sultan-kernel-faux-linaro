@@ -446,7 +446,7 @@ void __init pyramid_audio_init(void)
 	htc_8x60_register_ecodec_ops(&eops);
 	acoustic_register_ops(&acoustic);
 	htc_8x60_register_aic3254_ops(&aops);
-	msm_set_voc_freq(48000, 48000);
+	msm_set_voc_freq(8000, 8000);
 #endif
 
 	aic3254_register_ctl_ops(&cops);
