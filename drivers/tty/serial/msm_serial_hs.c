@@ -759,7 +759,7 @@ static void msm_hs_set_termios(struct uart_port *uport,
 	msm_hs_write(uport, UARTDM_CR_ADDR, RESET_TX);
 
 	if (msm_uport->rx.flush == FLUSH_NONE) {
-		wake_unlock(&msm_uport->rx.wake_lock);
+		wake_lock(&msm_uport->rx.wake_lock);
 		msm_uport->rx.flush = FLUSH_IGNORE;
 		/*
 		 * Before using dmov APIs make sure that
@@ -827,7 +827,7 @@ static void msm_hs_stop_rx_locked(struct uart_port *uport)
 	mb();
 	/* Disable the receiver */
 	if (msm_uport->rx.flush == FLUSH_NONE) {
-		wake_unlock(&msm_uport->rx.wake_lock);
+		wake_lock(&msm_uport->rx.wake_lock);
 		/* do discard flush */
 		msm_dmov_flush(msm_uport->dma_rx_channel);
 	}
