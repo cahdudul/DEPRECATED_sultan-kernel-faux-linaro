@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Linux/arm 3.0.72 Kernel Configuration
+# Linux/arm 3.0.73 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_SYS_SUPPORTS_APM_EMULATION=y
@@ -1233,11 +1233,6 @@ CONFIG_MPU_SENSORS_AK8975=y
 # CONFIG_MPU_SENSORS_HSCDTD004A is not set
 CONFIG_MPU_SENSORS_TIMERIRQ=y
 # CONFIG_MPU_SENSORS_DEBUG is not set
-
-#
-# Motorola TS 27.010 Mux driver over UART
-#
-# CONFIG_MOT_FEAT_TS27010MUX_UART is not set
 CONFIG_FSYNC_CONTROL=y
 CONFIG_HAVE_IDE=y
 # CONFIG_IDE is not set
