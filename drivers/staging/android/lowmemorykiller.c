@@ -29,6 +29,8 @@
  *
  */
 
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/mm.h>
@@ -113,10 +115,8 @@ static int fudgeswap = 512;
 
 #define lowmem_print(level, x...)			\
 	do {						\
-		if (lowmem_debug_level >= (level)) {	\
-			printk(KERN_INFO "lowmem: ");		\
-			printk(x);			\
-		}					\
+		if (lowmem_debug_level >= (level))	\
+			pr_info(x);			\
 	} while (0)
 
 static int
