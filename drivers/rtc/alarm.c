@@ -518,9 +518,6 @@ static void alarm_shutdown(struct platform_device *pdev)
 	int offmode_alarm;
 	struct rtc_wkalrm rtc_alarm;
 
-	if (!htc_is_offalarm_enabled())
-		return;
-
 	offmode_alarm = find_offmode_alarm();
 	if (offmode_alarm > 0) {
 		pr_alarm(FLOW, "set offmode alarm(%u)", offmode_alarm);
