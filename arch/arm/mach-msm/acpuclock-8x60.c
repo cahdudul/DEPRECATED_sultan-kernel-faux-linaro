@@ -682,7 +682,7 @@ static void __init scpll_init(int sc_pll)
 	 * might not use the full range of calibrated frequencies, but this
 	 * simplifies changes required for future increases in max CPU freq.
 	 */
-	regval = (L_VAL_SCPLL_CAL_MAX << 28) | (L_VAL_SCPLL_CAL_MIN << 16);
+	regval = (L_VAL_SCPLL_CAL_MAX << 24) | (L_VAL_SCPLL_CAL_MIN << 16);
 	writel_relaxed(regval, sc_pll_base[sc_pll] + SCPLL_CAL_OFFSET);
 
 	/* Start calibration */
@@ -853,7 +853,7 @@ uint32_t acpu_check_khz_value(unsigned long khz)
 {
 	struct clkctl_acpu_speed *f;
 
-	if (khz > 1944000)
+	if (khz > 2052000)
 		return CONFIG_MSM_CPU_FREQ_MAX;
 
 	if (khz < 192)
@@ -954,13 +954,8 @@ static int __init acpuclk_8x60_init(struct acpuclk_soc_data *soc_data)
 	bus_init();
 
 	/* Improve boot time by ramping up CPUs immediately. */
-#ifdef CONFIG_MSM_CPU_FREQ_SET_MIN_MAX
-	for_each_online_cpu(cpu)
-		acpuclk_8x60_set_rate(cpu, CONFIG_MSM_CPU_FREQ_MAX, SETRATE_INIT);
-#else
 	for_each_online_cpu(cpu)
 		acpuclk_8x60_set_rate(cpu, 1512000, SETRATE_INIT);
-#endif
 
 	acpuclk_register(&acpuclk_8x60_data);
 	cpufreq_table_init();
