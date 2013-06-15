@@ -7,10 +7,23 @@ export ARCH=arm
 export CROSS_COMPILE=/home/sultan/Downloads/arm-cortex_a8-linux-gnueabi-linaro_4.7.4-2013.06/bin/arm-cortex_a8-linux-gnueabi-
 
 ## Build Sultan kernel
+rm -f /home/sultan/sultan-kernel-faux-linaro/arch/arm/boot/zImage
 make -j$MAKE ARCH=arm
 sleep 1
-echo Copying Modules
+echo Copying and zipping modules plus zImage
 sleep 1
+rm -f /home/sultan/Documents/modules/*
 cp -a $(find . -name *.ko -print |grep -v initramfs) /home/sultan/Documents/modules
+rm -f /home/sultan/Documents/modules/modules.zip
+rm -f /home/sultan/sultan-kernel-faux-linaro/arch/arm/boot/zImage.zip
+cd /home/sultan/Documents/modules
+zip modules-jb.zip *
+cd /home/sultan/sultan-kernel-faux-linaro/arch/arm/boot
+zip zImage.zip zImage
+rm -f /home/sultan/Documents/Pyramid_Sense/modules.zip
+rm -f /home/sultan/Documents/Pyramid_Sense/zImage.zip
+cp /home/sultan/Documents/modules/modules.zip /home/sultan/Documents/Pyramid_Sense
+cp /home/sultan/sultan-kernel-faux-linaro/arch/arm/boot/zImage.zip /home/sultan/Documents/Pyramid_Sense
+cd /home/sultan/sultan-kernel-faux-linaro
 
 
