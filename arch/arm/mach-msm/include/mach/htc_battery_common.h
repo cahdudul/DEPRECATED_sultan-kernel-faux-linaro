@@ -43,10 +43,6 @@ enum charger_control_flag {
 	ENABLE_CHARGER,
 	ENABLE_LIMIT_CHARGER,
 	DISABLE_LIMIT_CHARGER,
-#if defined(CONFIG_MACH_PRIMODD) || defined(CONFIG_MACH_PRIMOTD)
-	PHONE_CALL_IN,
-	PHONE_CALL_STOP,
-#endif
 	END_CHARGER
 };
 /* context event */
